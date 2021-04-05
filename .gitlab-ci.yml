@@ -1,0 +1,15 @@
+image: node:10-alpine
+
+stages:
+  - node-build
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+node-build:
+  stage: node-build
+  script:
+    - npm run clean
+    - npm install --registry https://registry.npm.taobao.org
+    - chmod -R 777 node_modules
+    - npm run build    
